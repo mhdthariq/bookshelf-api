@@ -99,7 +99,7 @@ const getAllBooksHandler = (request, h) => {
     );
   }
 
-  return {
+  const response = h.response({
     status: 'success',
     data: {
       books: filteredBooks.map((book) => ({
@@ -108,7 +108,9 @@ const getAllBooksHandler = (request, h) => {
         publisher: book.publisher,
       })),
     },
-  };
+  });
+  response.code(200);
+  return response;
 };
 
 const getBookByIdHandler = (request, h) => {
